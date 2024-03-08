@@ -2,12 +2,17 @@ const express = require('express');     // import expresss
 
 const app = express();    // initalize express
 
+const postRouter = require('./routers/postRouter'); // connecting from postrouter.js file
+
+// middleware
+app.use('/post', postRouter);
+
 const port = 5000;  // default port
 
 // start express server
 
 
-app.get('/' , ( req, res) => {
+app.get('/add' , ( req, res) => {
     res.send( 'response from express server');
 });// request 
 
