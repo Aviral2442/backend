@@ -7,7 +7,7 @@ router.post('/add', (req, res) => {
 
     new Model(req.body).save() // to save data in mongo db
 
-    // thenc 
+    // thenc
 
     .then((result) => {
         res.status(200).json(result);  // status code 200 meNS DATA is saved in mongo db just like error 404

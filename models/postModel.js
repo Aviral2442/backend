@@ -6,7 +6,7 @@ const mySchema = new Schema({
 
     // title : String,
     title : {type : String, required : true},
-    user : String,
+    username : String,
     postedAt : Date,
     description : String,
     image : String,
