@@ -7,28 +7,55 @@ router.post('/add', (req, res) => {
 
     new Model(req.body).save() // to save data in mongo db
 
-    // thenc
+        // thenc
 
-    .then((result) => {
-        res.status(200).json(result);  // status code 200 meNS DATA is saved in mongo db just like error 404
-    }).catch((err) => {
-        console.log(err);
-        res.status(500).json(err);     // status code 500 
+        .then((result) => {
+            res.status(200).json(result);  // status code 200 meNS DATA is saved in mongo db just like error 404
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err);     // status code 500 
 
-        // response status code
-        // 100 - 199 - informational
-        // 200 -299 - success
-        // 300 - 399 - 
-        // 400 499 - client side error
-        // 500 - 599 - server / backend side error
-        
-    });
+            // response status code
+            // 100 - 199 - informational
+            // 200 -299 - success
+            // 300 - 399 - 
+            // 400 499 - client side error
+            // 500 - 599 - server / backend side error
 
-  //   res.send('post add operation');  only for response
+        });
+
+    //   res.send('post add operation');  only for response
 });
+
+
+// taking data from backend / database
 
 router.get('/getall', (req, res) => {
-    res.send('post read operation');
-});
+    Model.find()
 
-module.exports = router;
+        //    thenc
+        .then((result) => {
+            res.status(200).json(result);  // status code 200 meNS DATA is saved in mongo db just like error 404
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err);     
+        });
+    });
+
+    // delete post
+
+    // : denotes url parameter
+    router.delete('/delete/:id', (req, res) => {
+        Model.findByIdAndDelete(req.params.id)
+
+        .then((result) => {
+            res.status(200).json(result);  // status code 200 meNS DATA is saved in mongo db just like error 404
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err);     
+        });
+
+    })
+
+
+    module.exports = router;
